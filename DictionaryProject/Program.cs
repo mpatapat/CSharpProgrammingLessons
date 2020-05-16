@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Xml.Schema;
+using System.Linq;
 
 namespace DictionaryProject
 {
@@ -25,7 +28,36 @@ namespace DictionaryProject
                 Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}", custValuePair.Value.ID,custValuePair.Value.Name,custValuePair.Value.Salary);
             }
 
-           // Console.WriteLine("Hello World!");
+            if (!DictCust.ContainsKey(cust1.ID))
+            {
+                DictCust.Add(cust1.ID, cust1);
+            }
+
+            // Console.WriteLine("Hello World!")
+            /*
+             * 1. TryGetValue()
+             * 2. Count()
+             * 3. Remove()
+             * 4. Clear()
+             * 5. Using LINQ extension methods with Dictionary
+             * 6. Different ways to convert an array into a dictionary
+             */
+
+            if (DictCust.TryGetValue(101,out outCust))
+            {
+                Console.WriteLine("ID = {0},",outCust.ID);
+            }
+
+            Console.WriteLine("Total Customer {0}",DictCust.Count());
+            Console.WriteLine("Customer Salary greater than 1000 is equal to : {0}",DictCust.Count(kvp => kvp.Value.Salary > 1000));
+
+            // Convert an array to Dictionary
+
+            Cust[] custArray = new Cust[3];
+            custArray[0] = cust1;
+            custArray[1] = cust2;
+
+            custArray.ToDictionary(cst => cst.ID, cst => cst);
         }
     }
 
