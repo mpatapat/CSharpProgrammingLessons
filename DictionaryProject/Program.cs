@@ -20,9 +20,9 @@ namespace DictionaryProject
             Cust outCust = DictCust[103];
             Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}",outCust.ID,outCust.Name,outCust.Salary);
 
-            foreach ()
+            foreach (KeyValuePair<int,Cust> custValuePair in DictCust)
             {
-
+                Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}", custValuePair.Value.ID,custValuePair.Value.Name,custValuePair.Value.Salary);
             }
 
            // Console.WriteLine("Hello World!");
